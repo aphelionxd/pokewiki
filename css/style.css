@@ -1,12 +1,32 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 body {
+    display: flex;
+    flex-direction: column;
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
     background-image: url(../img/4917635.jpg);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+}
+
+#resetButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    background-color: #e84118;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+#resetButton:hover {
+    background-color: #c0392b;
 }
 
 .container {
@@ -17,6 +37,8 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 80%;
     max-width: 600px;
+    margin: 100px auto 20px; /* Ajusta a margem para centralizar a caixa de pesquisa e garantir distância do topo */
+    position: relative;
 }
 
 .header {
@@ -50,33 +72,26 @@ button:hover {
 
 #animationContainer {
     margin-top: 20px;
-    position: relative;
     width: 100px;
     height: 100px;
-    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-#pokeball {
-    width: 100%;
-    animation: shake 1s infinite;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    margin-top: 15px;
-    padding-bottom: 15px;
+#loadingIndicator {
+    display: none; /* Oculto por padrão */
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #4CAF50;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
 }
 
-@keyframes shake {
-    0%, 100% { transform: translate(-50%, -50%) rotate(0); }
-    25% { transform: translate(-50%, -50%) rotate(-10deg); }
-    50% { transform: translate(-50%, -50%) rotate(10deg); }
-    75% { transform: translate(-50%, -50%) rotate(-10deg); }
-}
-
-@keyframes explode {
-    0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-    100% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 .pokemon-info {
@@ -116,12 +131,11 @@ button:hover {
 }
 
 footer {
-    position: absolute;
-    bottom: 10px;
-    width: 100%;
-    text-align: center;
     background-color: #000;
     color: #fff;
+    text-align: center;
     padding: 10px 0;
+    width: 100%;
     font-size: 0.9rem;
+    margin-top: auto; /* Empurra o rodapé para o fundo da página */
 }

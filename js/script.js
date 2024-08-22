@@ -1,3 +1,22 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const pokemonNameInput = document.getElementById('pokemonNameInput');
+    
+    // Adiciona o evento de pressionar "Enter" para buscar Pokémon
+    pokemonNameInput.addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault(); // Evita o comportamento padrão de submit
+            getPokemon();
+        }
+    });
+
+    // Adiciona o evento de clique para o botão de reset
+    document.getElementById('resetButton').addEventListener('click', () => {
+        document.getElementById('pokemonNameInput').value = '';
+        document.getElementById('pokemonInfo').style.display = 'none';
+        document.getElementById('loadingIndicator').style.display = 'none';
+    });
+});
+
 function capitalize(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
@@ -5,27 +24,27 @@ function capitalize(str) {
 // Função principal para buscar e exibir informações do Pokémon
 function getPokemon() {
     const pokemonName = document.getElementById('pokemonNameInput').value.toLowerCase();
+    
+    // Mostra o indicador de carregamento e oculta as informações do Pokémon
+    const pokemonInfo = document.getElementById('pokemonInfo');
+    const loadingIndicator = document.getElementById('loadingIndicator');
+    
+    pokemonInfo.style.display = 'none';
+    loadingIndicator.style.display = 'block';
 
     fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
         .then(response => {
-            // Verifica se a requisição foi bem-sucedida
             if (!response.ok) {
                 throw new Error('Pokémon não encontrado!');
             }
-            return response.json(); // Converte a resposta para JSON
+            return response.json();
         })
         .then(data => {
-            // Extrai e formata os dados do Pokémon
             const { name, height, weight, types, abilities, stats, sprites } = data;
 
-            // Formata os tipos do Pokémon em uma string legível
             const tipos = types.map(type => capitalize(type.type.name)).join(', ');
-
-            // Formata as habilidades do Pokémon em uma string legível
             const habilidades = abilities.map(ability => capitalize(ability.ability.name)).join(', ');
 
-            // Monta o HTML para exibir as informações do Pokémon
-            const pokemonInfo = document.getElementById('pokemonInfo');
             pokemonInfo.innerHTML = `
                 <h2>${capitalize(name)}</h2>
                 <img src="${sprites.front_default}" alt="${name}">
@@ -44,20 +63,14 @@ function getPokemon() {
                 </ul>
             `;
 
-            // Exibe a animação de explosão da Pokébola
-            const pokeball = document.getElementById('pokeball');
-            pokeball.style.animation = 'explode 1s forwards';
-
-            // Mostra as informações do Pokémon após a animação
-            setTimeout(() => {
-                pokemonInfo.style.display = 'block';
-                pokeball.style.display = 'none';
-            }, 1000);
+            // Oculta o indicador de carregamento e mostra as informações do Pokémon
+            loadingIndicator.style.display = 'none';
+            pokemonInfo.style.display = 'block';
         })
         .catch(error => {
-            // Trata erros na requisição ou processamento dos dados
             console.error('Erro ao buscar dados:', error);
-            const pokemonInfo = document.getElementById('pokemonInfo');
             pokemonInfo.innerHTML = `<p style="color: red;">${error.message}</p>`;
+            loadingIndicator.style.display = 'none';
+            pokemonInfo.style.display = 'block';
         });
 }
