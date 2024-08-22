@@ -114,3 +114,14 @@ button:hover {
 .pokemon-info ul li {
     margin-bottom: 5px;
 }
+
+footer {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    background-color: #000;
+    color: #fff;
+    padding: 10px 0;
+    font-size: 0.9rem;
+}
