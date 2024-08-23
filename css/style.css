@@ -9,7 +9,7 @@ body {
     flex-direction: column;
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
-    background-image: url(/img/4917635.jpg);
+    background-image: url(../img/4917635.jpg);
     background-size: cover;
     background-attachment: fixed;
 }
