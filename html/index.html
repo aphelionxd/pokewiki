@@ -8,19 +8,37 @@
     <link rel="stylesheet" href="../css/style.css">
     <script src="../js/script.js" defer></script>
     <meta name="google-site-verification" content="MEkjpf6R-SpDDO0HlX_DY4ImFE1pLMyhrqhFKVyjFVo" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4836691179983808"
+     crossorigin="anonymous"></script>
 </head>
 <body>
-    <button id="resetButton">Resetar</button>
-    <div class="container">
-        <h1 class="header">Poke wiki</h1>
-        <input type="text" id="pokemonNameInput" placeholder="Insira o nome do Pokémon">
-        <button onclick="getPokemon()">Buscar</button>
-        <div id="animationContainer">
-            <div id="loadingIndicator"></div>
+    <button id="openSidebar">&#9776;</button>
+
+    <div id="sidebar">
+        <div class="logo">
+            <img src="../img/logopokewiki.gif" alt="">
         </div>
-        <div id="pokemonInfo" class="pokemon-info" style="display:none;">
+        <div class="version">
+            <p>Versão Beta - Gizmo</p>
         </div>
     </div>
+
+    <div class="main-content">
+        <div class="container">
+            <h1 class="header">Poke Wiki</h1>
+            <div class="search-box">
+                <input type="text" id="pokemonNameInput" placeholder="Insira o nome do Pokémon">
+                <button onclick="getPokemon()">Buscar</button>
+            </div>
+            <div id="animationContainer">
+                <div id="loadingIndicator"></div>
+            </div>
+            <div id="pokemonInfo" class="pokemon-info" style="display:none;">
+            </div>
+            <button id="resetButton">Resetar</button>
+        </div>
+    </div>
+
     <footer>
         <p>Versão Beta - Gizmo - © 2024</p>
     </footer>

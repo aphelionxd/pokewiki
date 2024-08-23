@@ -10,44 +10,39 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
     background-image: url(../img/4917635.jpg);
+    background-size: cover;
+    background-attachment: fixed;
 }
 
-#resetButton {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    padding: 5px 10px;
-    background-color: #e84118;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.9rem;
-}
-
-#resetButton:hover {
-    background-color: #c0392b;
+.main-content {
+    flex: 1;
+    margin-left: 250px; /* Espaço para a navbar lateral */
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .container {
-    text-align: center;
-    background-color: #fff;
-    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Fundo branco semi-transparente */
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    max-width: 600px;
-    margin: 100px auto 20px; /* Ajusta a margem para centralizar a caixa de pesquisa e garantir distância do topo */
+    padding: 20px;
+    width: 100%;
+    max-width: 600px; /* Largura máxima para a caixa de pesquisa */
+    box-sizing: border-box;
     position: relative;
+    text-align: center;
 }
 
-.header {
-    font-size: 2.5rem;
-    color: #e84118;
+.search-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 20px;
 }
 
-input[type="text"] {
+#pokemonNameInput {
     padding: 10px;
     margin-right: 10px;
     border: 2px solid #e84118;
@@ -80,7 +75,7 @@ button:hover {
 }
 
 #loadingIndicator {
-    display: none; /* Oculto por padrão */
+    display: none;
     border: 8px solid #f3f3f3;
     border-top: 8px solid #4CAF50;
     border-radius: 50%;
@@ -137,5 +132,102 @@ footer {
     padding: 10px 0;
     width: 100%;
     font-size: 0.9rem;
-    margin-top: auto; /* Empurra o rodapé para o fundo da página */
+    margin-top: auto;
+}
+
+/* Navbar lateral */
+#sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: -250px; /* Inicialmente escondido */
+    background-color: rgba(0, 0, 0, 0.9); /* Fundo escuro semi-transparente */
+    color: white;
+    transition: 0.3s;
+    padding: 20px;
+    z-index: 1000;
+    overflow: auto; /* Adiciona rolagem se o conteúdo exceder a altura */
+}
+
+#sidebar.open {
+    left: 0;
+}
+
+#sidebar .logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#sidebar .logo img {
+    width: 170px; /* Tamanho maior para a logo */
+    height: auto;
+}
+
+#sidebar .version {
+    text-align: center;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+#sidebar a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    font-size: 1.1rem;
+}
+
+#sidebar a:hover {
+    background-color: #575757;
+}
+
+#openSidebar {
+    font-size: 1.5rem;
+    background-color: #e84118;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1001;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 0; /* Remove o espaço da navbar lateral em telas menores */
+    }
+
+    #sidebar {
+        width: 200px; /* Reduz o tamanho da navbar lateral em telas menores */
+    }
+
+    #sidebar .logo img {
+        width: 110px; /* Reduz o tamanho da logo em telas menores */
+    }
+
+    #openSidebar {
+        font-size: 1.2rem; /* Ajusta o tamanho do botão de abrir sidebar em telas menores */
+        top: 10px;
+        left: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    #sidebar {
+        width: 150px; /* Reduz ainda mais o tamanho da navbar lateral em telas muito pequenas */
+    }
+
+    #sidebar .logo img {
+        width: 80px; /* Reduz ainda mais o tamanho da logo em telas muito pequenas */
+    }
+
+    #openSidebar {
+        font-size: 1rem; /* Ajusta o tamanho do botão de abrir sidebar em telas muito pequenas */
+        top: 5px;
+        left: 5px;
+    }
 }

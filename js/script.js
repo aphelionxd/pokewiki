@@ -15,6 +15,15 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('pokemonInfo').style.display = 'none';
         document.getElementById('loadingIndicator').style.display = 'none';
     });
+    
+    // Adiciona o evento de clique para abrir e fechar a sidebar
+    document.getElementById('openSidebar').addEventListener('click', () => {
+        document.getElementById('sidebar').classList.toggle('open');
+    });
+    
+    document.getElementById('loginButton').addEventListener('click', () => {
+        alert('Login clicado!');
+    });
 });
 
 function capitalize(str) {
@@ -25,7 +34,6 @@ function capitalize(str) {
 function getPokemon() {
     const pokemonName = document.getElementById('pokemonNameInput').value.toLowerCase();
     
-    // Mostra o indicador de carregamento e oculta as informações do Pokémon
     const pokemonInfo = document.getElementById('pokemonInfo');
     const loadingIndicator = document.getElementById('loadingIndicator');
     
@@ -63,7 +71,6 @@ function getPokemon() {
                 </ul>
             `;
 
-            // Oculta o indicador de carregamento e mostra as informações do Pokémon
             loadingIndicator.style.display = 'none';
             pokemonInfo.style.display = 'block';
         })
