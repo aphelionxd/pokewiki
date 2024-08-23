@@ -9,7 +9,7 @@ body {
     flex-direction: column;
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
-    background-image: url(../img/4917635.jpg);
+    background-image: url(/img/4917635.jpg);
     background-size: cover;
     background-attachment: fixed;
 }
@@ -138,18 +138,17 @@ footer {
 /* Navbar lateral */
 #sidebar {
     height: 100%;
-    width: 250px;
+    width: 270px; /* Ajuste a largura se necessário */
     position: fixed;
     top: 0;
-    left: -250px; /* Inicialmente escondido */
-    background-color: rgba(0, 0, 0, 0.9); /* Fundo escuro semi-transparente */
+    left: -270px; /* Ajuste a posição conforme a nova largura */
+    background-color: rgba(0, 0, 0, 0.9);
     color: white;
     transition: 0.3s;
     padding: 20px;
     z-index: 1000;
-    overflow: auto; /* Adiciona rolagem se o conteúdo exceder a altura */
+    overflow: auto;
 }
-
 #sidebar.open {
     left: 0;
 }
@@ -157,6 +156,7 @@ footer {
 #sidebar .logo {
     text-align: center;
     margin-bottom: 20px;
+    margin-left: 0; /* Garantir que a margem à esquerda não sobreponha o botão */
 }
 
 #sidebar .logo img {
@@ -191,7 +191,7 @@ footer {
     padding: 10px;
     position: fixed;
     top: 20px;
-    left: 20px;
+    left: 5px; /* Ajuste este valor conforme necessário */
     z-index: 1001;
 }
 
